@@ -1,0 +1,7 @@
+id,title,genre,rating
+1,Inception,Sci-Fi,8.8
+2,Parasite,Drama,8.6
+3,Interstellar,Sci-Fi,8.7
+4,The Matrix,Sci-Fi,8.7
+5,Oldboy,Thriller,8.4
+0,2,1,8.5
