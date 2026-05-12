@@ -15,10 +15,10 @@ void MovieManager::printAll() const {
     }
 }
 
-Movie* MovieManager::findById(int id) {
-    for (Movie& m : movies) {
+Movie* MovieManager::findById(int id) const {
+    for (const Movie& m : movies) {
         if (m.getId() == id) {
-            return &m;
+            return const_cast<Movie*>(&m);
         }
     }
     return nullptr;

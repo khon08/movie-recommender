@@ -8,7 +8,8 @@ OBJS = $(OBJDIR)/main.o \
        $(OBJDIR)/RatingManager.o \
        $(OBJDIR)/MovieManager.o \
        $(OBJDIR)/UserManager.o \
-       $(OBJDIR)/SimilarityCalculator.o
+       $(OBJDIR)/SimilarityCalculator.o \
+       $(OBJDIR)/Recommender.o
 
 all: $(TARGET)
 

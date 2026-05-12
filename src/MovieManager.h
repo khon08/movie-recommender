@@ -13,8 +13,8 @@ public:
     void addMovie(const Movie& movie);
     void printAll() const;
 
-    // 특정 ID로 영화 찾기
-    Movie* findById(int id);
+    // const 추가!
+    Movie* findById(int id) const;
 
     // 파일 I/O
     void loadFromFile(const std::string& filename);
