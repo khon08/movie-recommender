@@ -5,9 +5,10 @@
 #include <fstream>
 #include <sstream>
 #include "Movie.h"
+#include "BaseManager.h"
 using namespace std;
 
-class MovieManager {
+class MovieManager : public BaseManager {
 private:
     vector<Movie> movies;
 public:
@@ -15,7 +16,8 @@ public:
     void printAll() const;
     Movie* findByTitle(const string& title);
     void sortByRating();
-    void loadFromFile(const string& filename);
-    void saveToFile(const string& filename) const;
+    void loadFromFile(const string& filename) override;
+    void saveToFile(const string& filename) const override;
+    int size() const override { return movies.size(); }
 };
 #endif

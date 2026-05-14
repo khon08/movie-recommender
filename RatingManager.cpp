@@ -60,3 +60,22 @@ void RatingManager::saveToFile(const string& filename) const {
     f.close();
     cout << filename << " 저장 완료: " << ratings.size() << "건" << endl;
 }
+
+vector<Rating> RatingManager::getByUser(int userId) const {
+    vector<Rating> result;
+    for (const auto& r : ratings)
+        if (r.getUserId() == userId)
+            result.push_back(r);
+    return result;
+}
+
+vector<int> RatingManager::getAllUserIds() const {
+    vector<int> ids;
+    for (const auto& r : ratings) {
+        bool found = false;
+        for (int id : ids)
+            if (id == r.getUserId()) { found = true; break; }
+        if (!found) ids.push_back(r.getUserId());
+    }
+    return ids;
+}

@@ -2,6 +2,7 @@
 #include "MovieManager.h"
 #include "UserManager.h"
 #include "RatingManager.h"
+#include "Recommender.h"
 using namespace std;
 
 int main() {
@@ -9,10 +10,11 @@ int main() {
     UserManager userMgr;
     RatingManager ratingMgr;
 
-    // 시작: CSV 로드
     movieMgr.loadFromFile("data/movies.csv");
     userMgr.loadFromFile("data/users.csv");
     ratingMgr.loadFromFile("data/ratings.csv");
+
+    Recommender recommender(movieMgr, ratingMgr);
 
     int choice;
     while (true) {
@@ -23,12 +25,12 @@ int main() {
         cout << "4. Show All Users" << endl;
         cout << "5. Add Rating" << endl;
         cout << "6. Show All Ratings" << endl;
+        cout << "7. Recommend Movies" << endl;
         cout << "0. Exit" << endl;
         cout << "Choice: ";
         cin >> choice;
 
         if (choice == 0) {
-            // 종료: CSV 저장
             movieMgr.saveToFile("data/movies.csv");
             userMgr.saveToFile("data/users.csv");
             ratingMgr.saveToFile("data/ratings.csv");
@@ -67,6 +69,21 @@ int main() {
         }
         else if (choice == 6) {
             ratingMgr.printAll();
+        }
+        else if (choice == 7) {
+            int uid, k, n;
+            cout << "User ID: "; cin >> uid;
+            cout << "K (similar users): "; cin >> k;
+            cout << "N (recommendations): "; cin >> n;
+            vector<int> result = recommender.recommend(uid, k, n);
+            if (result.empty()) {
+                cout << "No recommendations available." << endl;
+            } else {
+                cout << "Recommended Movie IDs: ";
+                for (int id : result)
+                    cout << id << " ";
+                cout << endl;
+            }
         }
         else {
             cout << "Invalid choice." << endl;
