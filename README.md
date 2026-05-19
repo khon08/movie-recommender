@@ -1,4 +1,7 @@
-# Movie Recommender System
+markdown# Movie Recommender System
+
+**학번 (Student ID):** 20230114
+**이름 (Name):** 파이줄라이브 셔히자헌
 
 C++ based movie recommendation system using collaborative filtering.
 
@@ -95,5 +98,4 @@ userId,movieId,score
 - [x] CSV file I/O
 - [x] Edge case handling
 - [x] .gitignore applied (no .o files in repo)
-- [x] Valgrind memory leak free
 - [x] Makefile with -Wall -Wextra flags
