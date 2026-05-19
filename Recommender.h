@@ -18,5 +18,6 @@ public:
                             const vector<Rating>& ratingsB);
 
     vector<int> recommend(int userId, int K, int N);
+    void printRecommendations(int userId, int K, int N);
 };
 #endif

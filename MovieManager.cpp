@@ -6,19 +6,30 @@ using namespace std;
 void MovieManager::addMovie(const Movie& movie) {
     movies.push_back(movie);
 }
+
 void MovieManager::printAll() const {
     for (const auto& m : movies)
         cout << m << endl;
 }
+
 Movie* MovieManager::findByTitle(const string& title) {
     for (auto& m : movies)
         if (m.getTitle() == title)
             return &m;
     return nullptr;
 }
+
+Movie* MovieManager::findById(int id) {
+    for (auto& m : movies)
+        if (m.getId() == id)
+            return &m;
+    return nullptr;
+}
+
 void MovieManager::sortByRating() {
     sort(movies.begin(), movies.end());
 }
+
 void MovieManager::loadFromFile(const string& filename) {
     ifstream f(filename);
     if (!f.is_open()) {
@@ -26,7 +37,7 @@ void MovieManager::loadFromFile(const string& filename) {
         return;
     }
     string line;
-    getline(f, line); // header skip
+    getline(f, line);
     while (getline(f, line)) {
         if (line.empty()) continue;
         stringstream ss(line);
@@ -41,6 +52,7 @@ void MovieManager::loadFromFile(const string& filename) {
     f.close();
     cout << filename << " 로드 완료: " << movies.size() << "건" << endl;
 }
+
 void MovieManager::saveToFile(const string& filename) const {
     ofstream f(filename);
     if (!f.is_open()) {

@@ -15,6 +15,7 @@ public:
     void addMovie(const Movie& movie);
     void printAll() const;
     Movie* findByTitle(const string& title);
+    Movie* findById(int id);
     void sortByRating();
     void loadFromFile(const string& filename) override;
     void saveToFile(const string& filename) const override;

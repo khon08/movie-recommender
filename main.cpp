@@ -79,10 +79,16 @@ int main() {
             if (result.empty()) {
                 cout << "No recommendations available." << endl;
             } else {
-                cout << "Recommended Movie IDs: ";
-                for (int id : result)
-                    cout << id << " ";
-                cout << endl;
+                cout << "\n=== Recommended Movies ===" << endl;
+                for (int i = 0; i < (int)result.size(); i++) {
+                    Movie* m = movieMgr.findById(result[i]);
+                    if (m)
+                        cout << i+1 << ". " << m->getTitle()
+                             << " [" << m->getGenre() << "]"
+                             << " Rating: " << m->getRating() << endl;
+                    else
+                        cout << i+1 << ". Movie ID: " << result[i] << endl;
+                }
             }
         }
         else {
