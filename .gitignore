@@ -1,4 +1,26 @@
-src/recommend
+# Bajariladigan fayllar
+movie_recommender
+prog
+prog.dSYM/
+
+# Compile natijalari
 *.o
+*.a
 *.out
+
+# src ichidagi bajariladigan fayllar
+src/recommend
+
+# buggy versiyalar ichidagi bajariladigan fayllar
+buggy_v1/buggy_v1
+buggy_v1/buggy_v1.dSYM/
+buggy_v2/buggy_v2
+buggy_v2/buggy_v2.dSYM/
+buggy_v3/buggy_v3
+buggy_v3/buggy_v3.dSYM/
+
+# IDE va OS fayllar
+.vscode/
+.idea/
 .DS_Store
+Thumbs.db
