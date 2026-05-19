@@ -1,4 +1,4 @@
-markdown# Movie Recommender System
+# Movie Recommender System
 
 **학번 (Student ID):** 20230114
 **이름 (Name):** 파이줄라이브 셔히자헌
@@ -20,48 +20,43 @@ C++ based movie recommendation system using collaborative filtering.
 ---
 
 ## Project Structure
-movie-recommender/
-├── main.cpp
-├── Movie.h / Movie.cpp
-├── MovieManager.h / MovieManager.cpp
-├── User.h / User.cpp
-├── UserManager.h / UserManager.cpp
-├── Rating.h / Rating.cpp
-├── RatingManager.h / RatingManager.cpp
-├── Recommender.h / Recommender.cpp
-├── BaseManager.h
-├── Makefile
-├── .gitignore
-└── data/
-├── movies.csv
-├── users.csv
-└── ratings.csv
+
+    movie-recommender/
+    ├── main.cpp
+    ├── Movie.h / Movie.cpp
+    ├── MovieManager.h / MovieManager.cpp
+    ├── User.h / User.cpp
+    ├── UserManager.h / UserManager.cpp
+    ├── Rating.h / Rating.cpp
+    ├── RatingManager.h / RatingManager.cpp
+    ├── Recommender.h / Recommender.cpp
+    ├── BaseManager.h
+    ├── Makefile
+    ├── .gitignore
+    └── data/
+        ├── movies.csv
+        ├── users.csv
+        └── ratings.csv
 
 ---
 
 ## How to Build
 
-```bash
-make
-```
+    make
 
 ## How to Run
 
-```bash
-./movie_recommender
-```
+    ./movie_recommender
 
 ## How to Clean
 
-```bash
-make clean
-```
+    make clean
 
 ---
 
 ## Recommendation Algorithm
 
-`recommend(userId, K, N)` — 5 step flow:
+recommend(userId, K, N) — 5 step flow:
 
 1. Get my ratings
 2. Calculate similarity with all other users
@@ -69,23 +64,26 @@ make clean
 4. Collect movies I have not seen
 5. Return top N movies by score
 
-Similarity formula: `common * 10 - diff`
+Similarity formula: common * 10 - diff
 
 ---
 
 ## Data Format
 
-**movies.csv**
-id,title,genre,rating
-101,인터스텔라,SF,0
+movies.csv
 
-**users.csv**
-id,name
-1,Alice
+    id,title,genre,rating
+    101,인터스텔라,SF,0
 
-**ratings.csv**
-userId,movieId,score
-1,101,5
+users.csv
+
+    id,name
+    1,Alice
+
+ratings.csv
+
+    userId,movieId,score
+    1,101,5
 
 ---
 
