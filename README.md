@@ -1,6 +1,7 @@
 # Movie Recommender System
 **학번 (Student ID):** 20230114
 **이름 (Name):** 파이줄라이브 셔히자헌
+
 C++ based movie recommendation system using collaborative filtering.
 
 ## M4 Completed ✅
@@ -13,7 +14,7 @@ C++ based movie recommendation system using collaborative filtering.
 - Movie recommendation (collaborative filtering)
 - CSV file I/O
 - Edge case handling
-- **[NEW] Genre filter (filterByGenre)**
+- **[NEW] Genre filter — case-insensitive**
 - **[NEW] Statistics: average rating, by genre, Top N**
 
 ---
@@ -31,18 +32,22 @@ C++ based movie recommendation system using collaborative filtering.
     ├── BaseManager.h
     ├── Makefile
     ├── .gitignore
-    └── data/
-        ├── movies.csv
-        ├── users.csv
-        └── ratings.csv
+    ├── data/
+    │   ├── movies.csv
+    │   ├── users.csv
+    │   └── ratings.csv
+    └── archive/
 
 ---
 
 ## How to Build
-    g++ -std=c++17 Movie.cpp MovieManager.cpp Rating.cpp RatingManager.cpp Recommender.cpp User.cpp UserManager.cpp main.cpp -o movie_app
+    make
 
 ## How to Run
-    ./movie_app
+    ./movie_recommender
+
+## How to Clean
+    make clean
 
 ---
 
@@ -74,8 +79,8 @@ Similarity formula: common * 10 - diff
 
 ## Extended Features (Week 14)
 ### Genre Filter
-- filterByGenre(genre) — returns movies matching the genre
-- Integrated into menu option 8
+- filterByGenre(genre) — case-insensitive matching
+- sf / SF / Sf all work
 
 ### Statistics
 - getAverageRating() — overall average rating
@@ -110,6 +115,6 @@ ratings.csv
 - [x] CSV file I/O
 - [x] Edge case handling
 - [x] .gitignore applied
-- [x] Genre filter (filterByGenre)
+- [x] Genre filter — case-insensitive
 - [x] Statistics (average, by genre, Top N)
 - [x] Git branch workflow (feature/genre-filter)
