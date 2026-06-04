@@ -1,27 +1,14 @@
-# Bajariladigan fayllar
+# Compile qilingan fayllar
+movie_app
 movie_recommender
 prog
-prog.dSYM/
-
-# Compile natijalari
 *.o
-*.a
-*.out
-
-# src ichidagi bajariladigan fayllar
+*.dSYM
+buggy_v1/buggy_v1
+buggy_v2/buggy_v2
+buggy_v3/buggy_v3
 src/recommend
 
-# buggy versiyalar ichidagi bajariladigan fayllar
-buggy_v1/buggy_v1
-buggy_v1/buggy_v1.dSYM/
-buggy_v2/buggy_v2
-buggy_v2/buggy_v2.dSYM/
-buggy_v3/buggy_v3
-buggy_v3/buggy_v3.dSYM/
-
-# IDE va OS fayllar
-.vscode/
-.idea/
+# Mac fayllar
 .DS_Store
-Thumbs.db
-movie_app
+.vscode
