@@ -66,9 +66,14 @@ void MovieManager::saveToFile(const string& filename) const {
 // 14-hafta: yangi funksiyalar
 vector<Movie> MovieManager::filterByGenre(const string& genre) const {
     vector<Movie> result;
-    for (const auto& m : movies)
-        if (m.getGenre() == genre)
+    string lowerGenre = genre;
+    transform(lowerGenre.begin(), lowerGenre.end(), lowerGenre.begin(), ::tolower);
+    for (const auto& m : movies) {
+        string mg = m.getGenre();
+        transform(mg.begin(), mg.end(), mg.begin(), ::tolower);
+        if (mg == lowerGenre)
             result.push_back(m);
+    }
     return result;
 }
 
