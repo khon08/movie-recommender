@@ -9,13 +9,10 @@ int main() {
     MovieManager movieMgr;
     UserManager userMgr;
     RatingManager ratingMgr;
-
     movieMgr.loadFromFile("data/movies.csv");
     userMgr.loadFromFile("data/users.csv");
     ratingMgr.loadFromFile("data/ratings.csv");
-
     Recommender recommender(movieMgr, ratingMgr);
-
     int choice;
     while (true) {
         cout << "\n=== Movie Recommender ===" << endl;
@@ -26,10 +23,11 @@ int main() {
         cout << "5. Add Rating" << endl;
         cout << "6. Show All Ratings" << endl;
         cout << "7. Recommend Movies" << endl;
+        cout << "8. Filter by Genre" << endl;
+        cout << "9. Statistics" << endl;
         cout << "0. Exit" << endl;
         cout << "Choice: ";
         cin >> choice;
-
         if (choice == 0) {
             movieMgr.saveToFile("data/movies.csv");
             userMgr.saveToFile("data/users.csv");
@@ -37,7 +35,7 @@ int main() {
             cout << "Program ended." << endl;
             break;
         }
-        if (choice == 1) {
+        else if (choice == 1) {
             int id; string title, genre; float rating;
             cout << "Movie ID: "; cin >> id; cin.ignore();
             cout << "Title: "; getline(cin, title);
@@ -89,6 +87,49 @@ int main() {
                     else
                         cout << i+1 << ". Movie ID: " << result[i] << endl;
                 }
+            }
+        }
+        else if (choice == 8) {
+            string genre;
+            cout << "Genre (SF/액션/드라마/로맨스): "; 
+            cin >> genre;
+            vector<Movie> result = movieMgr.filterByGenre(genre);
+            if (result.empty()) {
+                cout << "No movies found for genre: " << genre << endl;
+            } else {
+                cout << "\n=== " << genre << " Movies ===" << endl;
+                for (int i = 0; i < (int)result.size(); i++)
+                    cout << i+1 << ". " << result[i].getTitle()
+                         << " Rating: " << result[i].getRating() << endl;
+            }
+        }
+        else if (choice == 9) {
+            int statChoice;
+            cout << "\n=== Statistics ===" << endl;
+            cout << "1. Average Rating" << endl;
+            cout << "2. Average Rating by Genre" << endl;
+            cout << "3. Top 5 Movies" << endl;
+            cout << "Choice: ";
+            cin >> statChoice;
+            try {
+                if (statChoice == 1) {
+                    cout << "Average Rating: " << movieMgr.getAverageRating() << endl;
+                }
+                else if (statChoice == 2) {
+                    auto avg = movieMgr.getAverageRatingByGenre();
+                    cout << "\n=== Average Rating by Genre ===" << endl;
+                    for (const auto& [genre, rating] : avg)
+                        cout << genre << ": " << rating << endl;
+                }
+                else if (statChoice == 3) {
+                    auto top = movieMgr.getTopN(5);
+                    cout << "\n=== Top 5 Movies ===" << endl;
+                    for (int i = 0; i < (int)top.size(); i++)
+                        cout << i+1 << ". " << top[i].getTitle()
+                             << " Rating: " << top[i].getRating() << endl;
+                }
+            } catch (const exception& e) {
+                cerr << "Error: " << e.what() << endl;
             }
         }
         else {
